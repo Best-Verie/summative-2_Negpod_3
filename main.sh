@@ -1,8 +1,64 @@
-#!/bin/bash 
+#!/bin/bash
 
-echo "Welcome to the ALU Student Registration System!"
+function print_menu() {
+    echo "=============================================================================="
+    echo "|                   ALU Student Registration System                          |"
+    echo "=============================================================================="
+    echo "| 1. Register Student                                                        |"
+    echo "| 2. Search Student                                                          |"
+    echo "| 3. View All Students                                                       |"
+    echo "| 4. Update Student                                                          |"
+    echo "| 5. Delete Student                                                          |"
+    echo "| 6. Clear                                                                   |"
+    echo "| 7. Menu                                                                    |"
+    echo "| 8. Exit                                                                    |"
+    echo "=============================================================================="
+}
 
-# Prompt user for student detaisl
-read -p "Enter student email: " email
-read -p "Enter student age: " age
-read -p "Enter student ID: " student_id
+function register_student() {
+    local email; local age; local student_id
+    read -r -p "Enter student email: " email
+    read -r -p "Enter student age: " age
+    read -r -p "Enter student ID: " student_id
+    number_regex='^[0-9]+$'
+    email_regex='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if [ -f students-list_1023.txt ] && [[ $(grep -c "$email" students-list_1023.txt) -gt 0 ]]; then
+      printf "\nStudent already exists\n"
+    elif [ -z "$email" ] || [ -z "$age" ] || [ -z "$student_id" ]; then
+      printf "\nAll fields are required\n"
+    elif ! [[ $age =~ $number_regex ]] ; then
+      printf "\nAge must be a number\n"
+    elif ! [[ $email =~ $email_regex ]] ; then
+      printf "\nInvalid email\n"
+    else
+        echo "$email:$age:$student_id" >> students-list_1023.txt
+        printf "\nStudent registered successfully\n"
+    fi
+}
+
+option='7'
+while true; do
+    if [ $option == '1' ]; then
+        register_student
+    elif [ $option == '2' ]; then
+      printf "\nFeature not implemented!\n";
+    elif [ $option == '3' ]; then
+        printf "\nFeature not implemented!\n";
+    elif [ $option == '4' ]; then
+        printf "\nFeature not implemented!\n";
+    elif [ $option == '5' ]; then
+        printf "\nFeature not implemented!\n";
+    elif [ $option == '6' ]; then
+        clear
+        print_menu
+    elif [ $option == '7' ]; then
+        print_menu
+    elif [ $option == '8' ]; then
+        printf "\nBye!\n"
+        exit 0
+    else
+        printf "\nInvalid option!\n"
+    fi
+    read -r -p "Choose option: " option
+done
+
