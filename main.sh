@@ -35,6 +35,7 @@ function register_student() {
         printf "\nStudent registered successfully\n"
     fi
 }
+
 function deleteStudent(){
     local id
     read -r -p "Enter student id: " id
@@ -44,8 +45,15 @@ function deleteStudent(){
     else
         printf "\nStudent not found\n"
     fi
+}
+
+function update_student() {
+    local student_id
+    read -r -p "Enter student ID to update: " student_id
 
 }
+
+
 option='7'
 while true; do
     if [ $option == '1' ]; then
