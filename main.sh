@@ -48,6 +48,11 @@ function search_student{
     fi
 }
 
+function view_all{
+	printf "\nAll students:\n"
+	less students-list_1023.txt
+}
+
 option='7'
 while true; do
     if [ $option == '1' ]; then
@@ -55,7 +60,7 @@ while true; do
     elif [ $option == '2' ]; then
         search_student
     elif [ $option == '3' ]; then
-        printf "\nFeature not implemented!\n";
+      	view_all
     elif [ $option == '4' ]; then
         printf "\nFeature not implemented!\n";
     elif [ $option == '5' ]; then
@@ -73,6 +78,7 @@ while true; do
     fi
     read -r -p "Choose option: " option
 done
+
 
 
 
