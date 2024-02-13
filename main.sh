@@ -36,12 +36,24 @@ function register_student() {
     fi
 }
 
+function search_student{
+    local query
+    printf "\nSearch student: "
+    read -r query
+    if [ -f students-list_1023.txt ] && [[ $(grep -c "$query" students-list_1023.txt) -gt 0 ]]; then
+	printf "\nStudent found:\n"
+	grep "$query" students-list_1023.txt
+    else 
+	printf "\nStudent not found\n"
+    fi
+}
+
 option='7'
 while true; do
     if [ $option == '1' ]; then
         register_student
     elif [ $option == '2' ]; then
-      printf "\nFeature not implemented!\n";
+        search_student
     elif [ $option == '3' ]; then
         printf "\nFeature not implemented!\n";
     elif [ $option == '4' ]; then
@@ -61,4 +73,6 @@ while true; do
     fi
     read -r -p "Choose option: " option
 done
+
+
 
