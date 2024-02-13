@@ -65,13 +65,12 @@ function update_student() {
             printf "\nInvalid email\n"
         else
             sed -i "/$student_id/c\\$email:$age:$student_id" students-list_1023.txt
-            printf "\nStudent with ID $student_id updated successfully\n"
+            printf "\nStudent with ID %s updated successfully\n" "$student_id"
         fi
     else
-        printf "\nStudent with ID $student_id not found\n"
+        printf "\nStudent with ID %s not found\n" "$student_id"
     fi
 }
-
 
 option='7'
 while true; do
