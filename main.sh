@@ -36,6 +36,9 @@ function register_student() {
     fi
 }
 
+
+function updateStudent (){}
+
 option='7'
 while true; do
     if [ $option == '1' ]; then
