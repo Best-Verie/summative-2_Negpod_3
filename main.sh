@@ -37,7 +37,12 @@ function register_student() {
 }
 
 
-function updateStudent (){}
+function update_student() {
+    local student_id
+    read -r -p "Enter student ID to update: " student_id
+    
+}
+
 
 option='7'
 while true; do
