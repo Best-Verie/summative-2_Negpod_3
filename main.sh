@@ -72,8 +72,6 @@ function update_student() {
     fi
 }
 
-
-
 function view_all {
 	printf "\nAll students:\n"
 	less students-list_1023.txt
