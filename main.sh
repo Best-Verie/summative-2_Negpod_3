@@ -35,7 +35,17 @@ function register_student() {
         printf "\nStudent registered successfully\n"
     fi
 }
+function deleteStudent(){
+    local id
+    read -r -p "Enter student id: " id
+    if [ -f students-list_1023.txt ] && [[ $(grep -c "$id" students-list_1023.txt) -gt 0 ]]; then
+        sed -i "/$id/d" students-list_1023.txt
+        printf "\nStudent deleted successfully\n"
+    else
+        printf "\nStudent not found\n"
+    fi
 
+}
 function search_student{
     local query
     printf "\nSearch student: "
@@ -78,6 +88,4 @@ while true; do
     fi
     read -r -p "Choose option: " option
 done
-
-
 
