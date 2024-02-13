@@ -35,7 +35,17 @@ function register_student() {
         printf "\nStudent registered successfully\n"
     fi
 }
+function deleteStudent(){
+    local id
+    read -r -p "Enter student id: " id
+    if [ -f students-list_1023.txt ] && [[ $(grep -c "$id" students-list_1023.txt) -gt 0 ]]; then
+        sed -i "/$id/d" students-list_1023.txt
+        printf "\nStudent deleted successfully\n"
+    else
+        printf "\nStudent not found\n"
+    fi
 
+}
 function search_student{
     local query
     printf "\nSearch student: "
@@ -43,7 +53,7 @@ function search_student{
     if [ -f students-list_1023.txt ] && [[ $(grep -c "$query" students-list_1023.txt) -gt 0 ]]; then
 	printf "\nStudent found:\n"
 	grep "$query" students-list_1023.txt
-    else 
+    else
 	printf "\nStudent not found\n"
     fi
 }
@@ -64,7 +74,7 @@ while true; do
     elif [ $option == '4' ]; then
         printf "\nFeature not implemented!\n";
     elif [ $option == '5' ]; then
-        printf "\nFeature not implemented!\n";
+       	deleteStudent
     elif [ $option == '6' ]; then
         clear
         print_menu
@@ -78,7 +88,4 @@ while true; do
     fi
     read -r -p "Choose option: " option
 done
-
-
-
 
