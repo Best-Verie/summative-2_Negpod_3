@@ -35,7 +35,17 @@ function register_student() {
         printf "\nStudent registered successfully\n"
     fi
 }
+function deleteStudent(){
+    local id
+    read -r -p "Enter student id: " id
+    if [ -f students-list_1023.txt ] && [[ $(grep -c "$id" students-list_1023.txt) -gt 0 ]]; then
+        sed -i "/$id/d" students-list_1023.txt
+        printf "\nStudent deleted successfully\n"
+    else
+        printf "\nStudent not found\n"
+    fi
 
+}
 option='7'
 while true; do
     if [ $option == '1' ]; then
@@ -47,7 +57,7 @@ while true; do
     elif [ $option == '4' ]; then
         printf "\nFeature not implemented!\n";
     elif [ $option == '5' ]; then
-        printf "\nFeature not implemented!\n";
+       	deleteStudent
     elif [ $option == '6' ]; then
         clear
         print_menu
