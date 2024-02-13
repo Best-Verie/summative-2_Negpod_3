@@ -23,7 +23,9 @@ function register_student() {
     number_regex='^[0-9]+$'
     email_regex='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     if [ -f students-list_1023.txt ] && [[ $(grep -c "$email" students-list_1023.txt) -gt 0 ]]; then
-      printf "\nStudent already exists\n"
+      printf "\nStudent with that email already exists\n"
+    elif [ -f students-list_1023.txt ] && [[ $(grep -c "$student_id" students-list_1023.txt) -gt 0 ]]; then
+      printf "\nStudent with that ID already exists\n"
     elif [ -z "$email" ] || [ -z "$age" ] || [ -z "$student_id" ]; then
       printf "\nAll fields are required\n"
     elif ! [[ $age =~ $number_regex ]] ; then
