@@ -36,39 +36,15 @@ function register_student() {
     fi
 }
 
-function deleteStudent(){
-    local id
-    read -r -p "Enter student id: " id
-    if [ -f students-list_1023.txt ] && [[ $(grep -c "$id" students-list_1023.txt) -gt 0 ]]; then
-        sed -i "/$id/d" students-list_1023.txt
-        printf "\nStudent deleted successfully\n"
+function search_student{
+    local query
+    printf "\nSearch student: "
+    read -r query
+    if [ -f students-list_1023.txt ] && [[ $(grep -c "$query" students-list_1023.txt) -gt 0 ]]; then
+	printf "\nStudent found:\n"
+	grep "$query" students-list_1023.txt
     else
-        printf "\nStudent not found\n"
-    fi
-}
-
-function update_student() {
-    local student_id
-    read -r -p "Enter student ID to update: " student_id
-
-    if [ -f students-list_1023.txt ] && grep -q "$student_id" students-list_1023.txt; then
-        local email; local age
-        read -r -p "Enter updated email: " email
-        read -r -p "Enter updated age: " age
-        number_regex='^[0-9]+$'
-        email_regex='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-        if [ -z "$email" ] || [ -z "$age" ]; then
-            printf "\nAll fields are required\n"
-        elif ! [[ $age =~ $number_regex ]]; then
-            printf "\nAge must be a number\n"
-        elif ! [[ $email =~ $email_regex ]]; then
-            printf "\nInvalid email\n"
-        else
-            sed -i "/$student_id/c\\$email:$age:$student_id" students-list_1023.txt
-            printf "\nStudent with ID %s updated successfully\n" "$student_id"
-        fi
-    else
-        printf "\nStudent with ID %s not found\n" "$student_id"
+	printf "\nStudent not found\n"
     fi
 }
 
@@ -77,7 +53,7 @@ while true; do
     if [ $option == '1' ]; then
         register_student
     elif [ $option == '2' ]; then
-      printf "\nFeature not implemented!\n";
+        search_student
     elif [ $option == '3' ]; then
         printf "\nFeature not implemented!\n";
     elif [ $option == '4' ]; then
