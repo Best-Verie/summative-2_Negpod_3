@@ -35,11 +35,11 @@ bash main.sh
 ### Additional Scripts
 
 There are two additional scripts files in this directory, <code>move-t0-directory.sh</code> and <code>backup-Negpod_3.sh</code>.
-1. Running <code>move-t0-directory.sh</code> will move <code>main.sh Students-list_1023.txt Select-emails.sh student-emails.txt</code> into the <code>negpod_3-q1</code> directory
+1. Running <code>move-to-directory.sh</code> will move <code>main.sh, Students-list_1023.txt, Select-emails.sh and student-emails.txt</code> into the <code>negpod_3-q1</code> directory
 2. Running <code>backup-Negpod_3.sh</code> backups the <code>negpod_3-q1</code> directory to a remote server that is specified in the script.
 
 Note: 
-The <code>rsync</code> and <code>sshpass</code> commands are not available on your system by default. That said, you will need to install then first before running <code>backup-Negpod_3.sh</code>
+The <code>rsync</code> and <code>sshpass</code> commands are not available on your system by default. That said, you will need to install them first before running <code>backup-Negpod_3.sh</code>
 
 <code>
 sudo apt update
