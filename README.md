@@ -41,10 +41,17 @@ There are two additional scripts files in this directory, <code>move-t0-director
 Note: 
 The <code>rsync</code> and <code>sshpass</code> commands are not available on your system by default. That said, you will need to install them first before running <code>backup-Negpod_3.sh</code>
 
-<code>sudo apt update</code>
-<code>sudo apt install rsync</code>
-<code>sudo apt install sshpass</code>
+``` bash
+sudo apt update
+```
 
+``` bash
+sudo apt install rsync
+```
+
+``` bash
+sudo apt install sshpass
+```
 
 ### Contributors
 
