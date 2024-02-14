@@ -87,8 +87,15 @@ function update_student() {
 }
 
 function view_all {
-	printf "\nAll students:\n"
-	less students-list_1023.txt
+	echo "Student Records:"
+    echo "----------------------------------"
+    echo "Email                 Age      ID"
+    echo "----------------------------------"
+    cat Students-list_1023.txt | while IFS=: read -r email age student_id; do
+        printf "%-25s %-5s %s\n" "$email    " "$age " "$student_id"
+    done | column -t
+    echo "----------------------------------"
+
 }
 
 option='7'
